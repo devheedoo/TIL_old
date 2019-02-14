@@ -6,3 +6,5 @@ GROUP_CONCAT([DISTINCT] expr [,expr ...]
                  [ASC | DESC] [,col_name ...]]
              [SEPARATOR str_val])
 ```
+
+To create column for multiple paths of attached files.

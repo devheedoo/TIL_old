@@ -44,3 +44,11 @@ SELECT, UPDATE, INSERT과 같은 권한.
 - 사용자가 정의한 역할
 
 사용자에게 역할을 부여하면 그 역할에 정의된 권한을 사용할 수 있다. 권한 묶음이라고 볼 수 있다.
+
+
+
+추가 정리할 문서: [Database Security Guide](https://docs.oracle.com/cd/B19306_01/network.102/b14266/toc.htm)
+- [Authorization: Privileges, Roles, Profiles, and Resource Limitations](https://docs.oracle.com/cd/B19306_01/network.102/b14266/authoriz.htm#DBSEG50000)
+- [Access Control on Tables, Views, Synonyms, or Rows](https://docs.oracle.com/cd/B19306_01/network.102/b14266/accessre.htm#CHDDGEJG)
+- [Adminitstering Authentication](https://docs.oracle.com/cd/B19306_01/network.102/b14266/admnauth.htm#DBSEG02401)
+- [Administering User Privileges, Roles, and Profiles](https://docs.oracle.com/cd/B19306_01/network.102/b14266/admusers.htm#DBSEG10000)

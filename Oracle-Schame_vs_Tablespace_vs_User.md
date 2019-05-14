@@ -1,7 +1,7 @@
 [StackExchange - Difference between database vs user vs schema](<https://dba.stackexchange.com/questions/37012/difference-between-database-vs-user-vs-schema?answertab=votes#tab-top>)
 
-- User is the account for connecting to a database.
-- Schema is the set of objects that belong to that account.
+- **User is the account** for connecting to a database.
+- **Schema is the set of objects that belong to that account.**
 
 [Stackoverflow - Difference between a user and a schema in Oracle?](<https://stackoverflow.com/questions/880230/difference-between-a-user-and-a-schema-in-oracle>)
 
@@ -16,5 +16,5 @@
 [Stackoverflow - A database schema vs database tablespace?](<https://stackoverflow.com/questions/35120219/a-database-schema-vs-a-database-tablespace>)
 
 - A schema is used to organize the names of database objects.
-- A tablespace is a physical container for data.
+- **A tablespace is a physical container for data.**
 - A single object could be spread across multiple tablespaces, but it can only be defined in a single schema. Because of different schema, `A.TABLE_A` couldn't be same as `B.TABLE_A`.

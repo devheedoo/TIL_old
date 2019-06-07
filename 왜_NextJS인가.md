@@ -22,6 +22,8 @@
 >
 > 검색 엔진에 노출되려면 서비스가 검색 엔진에 등록되어야 한다. 그런데 CSR처럼 JS를 이용해 뷰를 생성하는 경우, 검색 엔진에 등록해주는 크롤러가 이 JS를 해석하는 과정이 필요하다. 상대적으로 노출이 줄어든다고 볼 수 있다.
 
+CSR 방식을 사용하는 React 프로젝트에서 SSR 방식의 장점을 얻기 위해 NextJS를 사용하는 것이다.
+
 NextJS는 이 외에도 다음과 같은 기능을 제공한다:
 
 - Automatic code splitting for faster page loads

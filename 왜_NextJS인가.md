@@ -8,9 +8,9 @@
 
 ## 웹페이지 렌더링 방식의 종류
 
-| | SSR | CSR |
+| | Server Side Rendering | Client Side Rendering |
 | ---| -------------------------- | ----------------------- |
-| 약자 | Server Side Rendering | Client Side Rendering |
+| 약자 | SSR | CSR |
 | 비슷한 의미의 용어 | 전통적인 렌더링 방식 | Single Page Application의 렌더링 방식 |
 | 초기 로딩 속도 | 빠르다 | 느리다 |
 | SEO | 유리하다 | 불리하다 |

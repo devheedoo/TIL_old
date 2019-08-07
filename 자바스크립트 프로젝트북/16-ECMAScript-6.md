@@ -1,5 +1,11 @@
 ## 16 ECMAScript 6
 
+> 복습 내용이어서 키워드/예제 위주로 간단히 정리했다.
+
+ECMAScript 6(이하 ES6)는 2015년 6월에 발표되었다. 브라우저 버전별 ES6 지원 여부는 https://caniuse.com/#feat=es6 에서 확인할 수 있다.
+
+- Babel
+
 - `let`, `const`
 
 - arrow function, `this` 바인딩

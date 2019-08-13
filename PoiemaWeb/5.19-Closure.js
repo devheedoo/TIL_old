@@ -1,3 +1,7 @@
+/*
+ * 출처: Closure | PoiemaWeb (https://poiemaweb.com/js-closure)
+ */
+
 /* 함수형 프로그래밍 */
 // 새로 정의한 함수는 새 클로저를 사용하므로 각자의 counter 자유변수를 사용한다.
 function makeCounter(counter) {

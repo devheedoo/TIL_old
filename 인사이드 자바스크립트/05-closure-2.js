@@ -1,3 +1,7 @@
+/*
+ * 출처: 인사이드 자바스크립트, 송형주/고현준, 한빛미디어
+ */
+
 function countSeconds(howMany) {
   for (var i=1; i<=howMany; i++) {
     console.log(`for loop(${i}):`, new Date());

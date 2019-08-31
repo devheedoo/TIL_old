@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <h1>리덕스의 세 가지 규칙</h1>
+  <ul>
+    <li>스토어는 단 한 개</li>
+    <li>state는 읽기 전용</li>
+    <li>변화는 순수 함수로 구성(같은 파라미터는 언제나 같은 결과를 출력)</li>
+  </ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js"></script>
+  <script>
+    // Redux 라이브러리 확인
+    // console.log(Redux);
+    
+    const INCREMENT = 'INCREMENT';
+    const DECREMENT = 'DECREMENT';
+    
+    /* 액션 생성자 */
+    const increment = (diff) => ({
+      type: INCREMENT,
+      diff: diff
+    });
+    
+    const decrement = (diff) => ({
+      type: DECREMENT,
+      diff: diff
+    });
+    
+    // console.log(increment(1));
+    // console.log(decrement(1));
+    
+    const initialState = {
+      number: 1,
+      foo: 'bar',
+      baz: 'qux'
+    };
+    
+    /* 리듀서 */
+    function counter(state = initialState, action) {
+      switch(action.type) {
+        case INCREMENT:
+          return {
+            ...state,
+            number: state.number + action.diff
+          };
+        case DECREMENT:
+          return {
+            ...state,
+            number: state.number - action.diff
+          };
+        default:
+          return state;
+      }
+    }
+    
+    // console.log(counter(undefined, increment(1)));
+    
+    /* 리덕스 스토어 */
+    const { createStore } = Redux;
+    const store = createStore(counter);
+    
+    /* 스토어 구독 시 로그 기록 */
+    const unsubscribe = store.subscribe(() => {
+      console.log(store.getState());
+    });
+    
+    /* 디스패치 */
+    store.dispatch(increment(1));
+    store.dispatch(decrement(5));
+    store.dispatch(increment(10));
+  </script>
+</body>
+</html>

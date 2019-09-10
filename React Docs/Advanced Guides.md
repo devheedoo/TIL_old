@@ -317,4 +317,92 @@ React.createElement(
     }
     ```
 
+## Reconciliation
+
+This article explains the choices we made in React’s “diffing” algorithm so that component updates are predictable while being fast enough for high-performance apps.
+
+> Reconciliation 작업은 Virtual DOM과 DOM을 비교해 DOM을 갱신하는 작업이다.
+
+### Motivation
+
+React implements a heuristic O(n) algorithm based on two assumptions:
+
+1. Two elements of different types will produce different trees.
+2. The developer can hint at which child elements may be stable across different renders with a `key` prop.
+
+### The Diffing Algorithm
+
+- root 요소의 타입이 다르면 오래 된 노드들을 파괴하고, 컴포넌트는 `componentWillUnmount()`를 받는다. 새 트리를 만들 때는 `componentWillMount()` 이후 `componentDidMount()`를 받는다.
+- 요소의 스타일 등 속성만 바뀐 경우에는 속성만 업데이트한다.
+- `key` 를 이용해 효율적으로 자식들을 업데이트할 수 있다.
+  - The key only has to be unique among its siblings, not globally unique.
+  - 인덱스를 키로 사용하면 재배열 시 매우 느릴 것이다.
+
+## Render Props
+
+The term [“render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) refers to a technique for sharing code between React components using a prop whose value is a function.
+
+```react
+<DataProvider render={data => (
+  <h1>Hello {data.target}</h1>
+)}/>
+```
+
+Libraries that use render props include [React Router](https://reacttraining.com/react-router/web/api/Route/render-func), [Downshift](https://github.com/paypal/downshift) and [Formik](https://github.com/jaredpalmer/formik).
+
+```react
+class Cat extends React.Component {
+  render() {
+    const mouse = this.props.mouse;
+    return (
+      <img src="/cat.jpg" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+    );
+  }
+}
+
+class Mouse extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.state = { x: 0, y: 0 };
+  }
+
+  handleMouseMove(event) {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    });
+  }
+
+  render() {
+    return (
+      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+   
+        {/*
+          <Mouse>가 무엇을 렌더링하는지에 대해 명확히 코드로 표기하는 대신,
+          `render` prop을 사용하여 무엇을 렌더링할지 동적으로 결정할 수 있습니다.
+        */}
+        {this.props.render(this.state)}
+      </div>
+    );
+  }
+}
+
+class MouseTracker extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={mouse => (
+          <Cat mouse={mouse} />
+        )}/>
+      </div>
+    );
+  }
+}
+```
+
+정리하자면, **render prop은 무엇을 렌더링할지 컴포넌트에 알려주는 함수입니다.**
+
+여기서 중요하게 기억해야 할 것은, “render props pattern”으로 불리는 이유로 *꼭 prop name으로 render를 사용할 필요는 없습니다.* 사실, [*어떤* 함수형 prop이든 render prop이 될 수 있습니다.](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 

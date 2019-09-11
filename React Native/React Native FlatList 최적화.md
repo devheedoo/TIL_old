@@ -2,12 +2,14 @@
 
 ## Infinite Scroll with React Native FlatList
 
-> https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6
+> 출처: https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6
 
 - 일정 개수만큼의 데이터만 로딩 후 `onEndReached` 속성을 이용해 맨 아래 닿았을 때 추가로 데이터 로딩
 - 예제 따라하기: https://github.com/devheedoo/ReactNativeInfiniteFlatList
 
 ## How to improve RN's FlatList performance?
+
+> 출처: https://github.com/filipemerker/flatlist-performance-tips
 
 ### Props
 

@@ -13,11 +13,12 @@
 
 ### Props
 
-- `removeClippedSubviews`: `false(default)`
-- `maxToRenderPerBatch`: from `10(default)` to `20`
-- `updateCellsBatchingPeriod`: from `50(default)` to `1000`
-- `initialNumToRender`: from `10(default)` to `20`
-- `windowSize`: from `21(default, 10-1-10)`to `11(5-1-5)`
+- `removeClippedSubviews`: 화면 바깥으로 나간 컴포넌트를 unmount할지 여부 / default: `false`
+- `maxToRenderPerBatch`: 한 번에 `FlatList`로 넘기는 `VirtualizedList`의 데이터 개수 / default: `10`
+- `updateCellsBatchingPeriod`: 컴포넌트 렌더링 최소 주기(ms) / default: `50`
+- `initialNumToRender`: 최초에 렌더링할 항목 개수 (렌더링 안 되면 빈 항목 상태) / default: `10`
+- `windowSize`: 가운데 포함해 위아래로 몇 개를 메모리에 저장할 지 / default: `21(위10 + 가운데1 + 아래10)`
+- `legacyImplementation`: 데이터량이 적을 경우, `VirtualizedList` 대신 기존의 `ListView` 사용
 
 ### List Items
 

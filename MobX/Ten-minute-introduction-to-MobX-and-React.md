@@ -21,20 +21,20 @@ MobX가 적용되지 않은 예제:
 class TodoStore {
   todos = [];
 
-	get completedTodosCount() {
+  get completedTodosCount() {
     return this.todos.filter(
       todo => todo.completed === true
     ).length;
   }
 
-	report() {
+  report() {
     if (this.todos.length === 0)
       return "<none>";
     return `Next todo: "${this.todos[0].task}". ` +
       `Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
 
-	addTodo(task) {
+  addTodo(task) {
     this.todos.push({
       task: task,
       completed: false,
@@ -85,32 +85,32 @@ Next todo: "grok MobX tutorial". Progress: 1/2
 ```javascript
 class ObservableTodoStore {
   @observable todos = [];
-	@observable pendingRequests = 0;
+  @observable pendingRequests = 0;
 
-	constructor() {
-		mobx.autorun(() => console.log(this.report));
-	}
+  constructor() {
+    mobx.autorun(() => console.log(this.report));
+  }
 
-	@computed get completedTodosCount() {
-		return this.todos.filter(
-			todo => todo.completed === true
-		).length;
-	}
+  @computed get completedTodosCount() {
+    return this.todos.filter(
+      todo => todo.completed === true
+    ).length;
+  }
 
-	@computed get report() {
-		if (this.todos.length === 0)
-			return "<none>";
-		return `Next todo: "${this.todos[0].task}". ` +
-			`Progress: ${this.completedTodosCount}/${this.todos.length}`;
-	}
+  @computed get report() {
+    if (this.todos.length === 0)
+      return "<none>";
+    return `Next todo: "${this.todos[0].task}". ` +
+      `Progress: ${this.completedTodosCount}/${this.todos.length}`;
+  }
 
-	addTodo(task) {
-		this.todos.push({
-			task: task,
-			completed: false,
-			assignee: null
-		});
-	}
+  addTodo(task) {
+    this.todos.push({
+      task: task,
+      completed: false,
+      assignee: null
+    });
+  }
 }
 
 const observableTodoStore = new ObservableTodoStore();
@@ -239,8 +239,8 @@ MobX의 참조가 어떤 식으로 이루어지는지 궁금할 것이다. assig
 
 ```javascript
 var peopleStore = mobx.observable([
-    { name: "Michel" },
-	{ name: "Me" }
+  { name: "Michel" },
+  { name: "Me" }
 ]);
 observableTodoStore.todos[0].assignee = peopleStore[0];
 observableTodoStore.todos[1].assignee = peopleStore[1];
@@ -256,8 +256,8 @@ peopleStore[0].name = "Michel Weststrate";
 ```javascript
 observableTodoStore.pendingRequests++;
 setTimeout(function() {
-    observableTodoStore.addTodo('Random Todo ' + Math.random());
-    observableTodoStore.pendingRequests--;
+  observableTodoStore.addTodo('Random Todo ' + Math.random());
+  observableTodoStore.pendingRequests--;
 }, 2000);
 ```
 

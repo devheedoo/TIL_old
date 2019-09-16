@@ -19,28 +19,28 @@ MobX가 적용되지 않은 예제:
 
 ```javascript
 class TodoStore {
-	todos = [];
+  todos = [];
 
 	get completedTodosCount() {
-    	return this.todos.filter(
-			todo => todo.completed === true
-		).length;
-    }
+    return this.todos.filter(
+      todo => todo.completed === true
+    ).length;
+  }
 
 	report() {
-		if (this.todos.length === 0)
-			return "<none>";
-		return `Next todo: "${this.todos[0].task}". ` +
-			`Progress: ${this.completedTodosCount}/${this.todos.length}`;
-	}
+    if (this.todos.length === 0)
+      return "<none>";
+    return `Next todo: "${this.todos[0].task}". ` +
+      `Progress: ${this.completedTodosCount}/${this.todos.length}`;
+  }
 
-    addTodo(task) {
-		this.todos.push({
-			task: task,
-			completed: false,
-            assignee: null
-		});
-	}
+	addTodo(task) {
+    this.todos.push({
+      task: task,
+      completed: false,
+      assignee: null
+    });
+  }
 }
 
 const todoStore = new TodoStore();
@@ -84,18 +84,18 @@ Next todo: "grok MobX tutorial". Progress: 1/2
 
 ```javascript
 class ObservableTodoStore {
-	@observable todos = [];
-  @observable pendingRequests = 0;
+  @observable todos = [];
+	@observable pendingRequests = 0;
 
-  constructor() {
-    mobx.autorun(() => console.log(this.report));
-  }
+	constructor() {
+		mobx.autorun(() => console.log(this.report));
+	}
 
 	@computed get completedTodosCount() {
-  	return this.todos.filter(
+		return this.todos.filter(
 			todo => todo.completed === true
 		).length;
-  }
+	}
 
 	@computed get report() {
 		if (this.todos.length === 0)

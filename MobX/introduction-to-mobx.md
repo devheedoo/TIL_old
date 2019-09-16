@@ -65,3 +65,40 @@ An *action* is any piece of code that changes the *state*.
 - All *Derivations* are updated **synchronously** by default.
 - *Computed values* are updated **lazily**.
 - All *Computed values* should be **pure**.
+
+## Question
+
+MobX의 `@observable` 데이터 비교는 deep, shallow 중 어떤 비교를 사용할까?
+
+(답) `observable`은 기본적으로 deep 비교를 한다. 기본 modifier가 `.deep`이다.
+
+> 출처: [Decorators | MobX](https://mobx.js.org/refguide/modifiers.html)
+
+```javascript
+class Store {
+  @observable.ref collectionRef = [];
+	@observable.shallow collectionShallow = [];
+	@observable/*.deep*/ collectionDeep = [];
+}
+```
+
+(추가) Action에 따라 적절한 modifier를 사용해야 한다.
+
+> 출처: https://rannte.tistory.com/entry/react-native-mobx-action-observable
+
+```javascript
+class Store {
+  @observable user = {
+    name: 'myName',
+    friends: [{ name: 'friendName' }]
+  }
+  @action editUser = () => {
+    // 전달한다 (1번만)
+    this.user.friends[0].name = 'newFriendName'
+    // 전달한다 (3번이나)
+    this.user = { name: 'myName', friends: [{ name: 'newFriendName' }]}
+  }
+}
+```
+
+두 번째 Action의 경우 observer에 전달을 3번 보내게 되고, 이는 리렌더링을 3번 발생시킨다. 따라서 API로부터 거대한 json 배열을 받는 Action의 경우, `.ref` modifier를 사용해야 성능 저하를 막을 수 있다.

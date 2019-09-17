@@ -1,4 +1,4 @@
-#MobX `observable` modifier 변경 비교
+# MobX `observable` modifier 변경 비교
 
 - 변경하는 modifier: `deep`, `shallow`, `ref`, `struct`
 - velopert님의 Vanilla JS MobX Boilerplate를 이용했다.

@@ -1,4 +1,4 @@
-- CodeSandbox: https://codesandbox.io/s/vanilla-js-mobx-boilerplate-5ye92?fontsize=14
+- CodeSandbox: https://codesandbox.io/s/vanilla-js-mobx-boilerplate-k6785
 
 MobX에서 `autorun`, `reaction`, `when` 차이점 실습 예제:
 

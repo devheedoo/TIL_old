@@ -7,7 +7,7 @@ create-react-app으로 만든 애플리케이션에서 MobX + decorator 환경�
 
 설정만 완료한 상태의 저장소입니다.
 
-- 
+- https://github.com/devheedoo/react-mobx-decorator
 
 그럼 환경을 구성하는 방법을 차례대로 설명하겠습니다.
 

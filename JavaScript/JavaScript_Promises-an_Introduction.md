@@ -411,4 +411,3 @@ return story.chapterUrls.map(getJSON)
 ```
 
 >  ES6 generator와 관련된 내용은 생략한다.
-

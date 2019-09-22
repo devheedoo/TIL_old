@@ -2,6 +2,8 @@
 
 https://developers.google.com/web/fundamentals/primers/promises
 
+**NOTE:** 원본을 그대로 번역한 것이 아닙니다. 필요한 내용만 메모하듯이 요약한 글입니다.
+
 ## What's all the fuss about?
 
 > fuss: 호들갑, 벌썩, 야단
@@ -46,7 +48,7 @@ img1.addEventListener('error', function() {
 
 ## Events aren't always the best way
 
-keyup, touchstrat와 같이 똑같은 객체에 여러 번 발생하는 경우 이벤트를 사용하기 적합합니다. 하지만 이벤트의 성공/실패와 비동기적으로 동작하려면 다음과 같이 해야할 것입니다:
+keyup, touchstart와 같이 똑같은 객체에 여러 번 발생하는 경우 이벤트를 사용하기 적합합니다. 하지만 이벤트의 성공/실패와 비동기적으로 동작하려면 다음과 같이 해야할 것입니다:
 
 ```javascript
 img1.callThisIfLoadedOrWhenLoaded(function() {
@@ -89,12 +91,12 @@ promise는 이벤트 리스너와 비슷하지만 다릅니다:
 
 promise는 4가지 상태로 존재할 수 있습니다:
 
-- fulfilled - 성공했을 때
-- rejected - 실패했을 때
+- fulfilled - 성공
+- rejected - 실패
 - pending - 아직 성공하거나 실패하기 전 (초기 상태)
-- settled - 성공하거나 실패한 후
+- settled - 성공하거나 실패
 
-만약 이런 promise처럼 동작할 수 있는 객체가 있으면 이 객체를 **thenable**하다고 합니다.
+만약 이렇게 promise처럼 동작할 수 있는 객체가 있으면 이 객체를 **thenable**하다고 합니다.
 
 ## Promises arrive in JavaScript!
 
@@ -135,7 +137,7 @@ promise.then(function(result) {
 
 `then()`은 2개의 인자를 받습니다. 성공/실패 시에 사용할 콜백 함수 하나씩입니다. 둘 다 선택적으로 사용할 수 있습니다.
 
-> 이것만으로는 이해가 잘 되지 않아서 MDN Reference 코드 하나를 덧붙인다:
+> 이것만으로는 이해가 잘 되지 않아서 MDN Reference 하나를 덧붙인다:
 >
 > ```javascript
 > // using a resolved promise, the 'then' block will be triggered instantly, 
@@ -143,15 +145,15 @@ promise.then(function(result) {
 > const resolvedProm = Promise.resolve(33);
 > 
 > let thenProm = resolvedProm.then(value => {
->     console.log("this gets called after the end of the main stack. the value received and returned is: " + value);
->     return value;
+>  console.log("this gets called after the end of the main stack. the value received and returned is: " + value);
+>  return value;
 > });
 > // instantly logging the value of thenProm
 > console.log(thenProm);
 > 
 > // using setTimeout we can postpone the execution of a function to the moment the stack is empty
 > setTimeout(() => {
->     console.log(thenProm);
+>  console.log(thenProm);
 > });
 > 
 > 
@@ -161,6 +163,7 @@ promise.then(function(result) {
 > // Promise {[[PromiseStatus]]: "resolved", [[PromiseValue]]: 33}
 > ```
 >
+> - [Return value | Promise.prototype.then() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Return_value)
 > - JavaScript 메인 스택 내에서 promise를 `console.log()`로 호출하면 "pending" 상태인 `Promise` 객체를 확인할 수 있다.
 > - `then()`의 반환 값은 `Promise` 객체이다.
 
@@ -170,7 +173,7 @@ Chrome 32, Oprea 19, Firefox 29, Safari 8 & Microsoft Edge는 기본적으로 pr
 
 > 결국 IE만 지원하지 않는다는 말이다.
 >
-> 참고: [Browser compatibility | Promise - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Browser_compatibility)
+> - [Browser compatibility | Promise - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Browser_compatibility)
 
 이전 버전에서 사용하려면 [링크](https://github.com/stefanpenner/es6-promise#readme)를 참고하십시오.
 
@@ -251,7 +254,7 @@ get('story.json').then(JSON.parse).then(function(response) {
 
 ```javascript
 function getJSON(url) {
-  return get(url).then(json.parse)''
+  return get(url).then(json.parse);
 }
 ```
 
@@ -291,13 +294,11 @@ asyncThing1().then(function() {
 });
 ```
 
-위 코드는 flowcharts로 확인해보십시오: [Error handling | JavaScript Promises: an Introduction](https://developers.google.com/web/fundamentals/primers/promises#error_handling)
+위 코드가 정확히 어떻게 동작하는지 flowcharts로 꼭 확인해보십시오: [Error handling | JavaScript Promises: an Introduction](https://developers.google.com/web/fundamentals/primers/promises#error_handling)
 
 ### JavaScript exceptions and promises
 
-Rejection은 promise가 rejected될 때에 발생하기도 하지만, 생성자 콜백이나 `then()`에서 오류가 있을 때에도 발생합니다.
-
-이러한 오류들에 대해서도  reject에서 처리할 수 있도록 구현해야 합니다.
+Rejection은 promise가 rejected될 때에 발생하기도 하지만, 생성자 콜백이나 `then()`에서 오류가 있을 때에도 발생합니다. 이러한 오류들에 대해서도  reject에서 처리할 수 있도록 구현해야 합니다.
 
 ### Error handling in practice
 
@@ -341,56 +342,73 @@ document.querySelector('.spinner').style.display = 'none';
 ```javascript
 getJSON('story.json').then(function(story) {
   addHtmlToPage(story.heading);
-}).then(function(story) {
   story.chapterUrls.forEach(function(chapterUrl) {
     getJSON(chapterUrl).then(function(chapter) {
-      addHtmlToPage(ㄹ)
-    })
-  })
-})
+      addHtmlToPage(chapter.html);
+    });
+  });
+}).then(function(story) {
+	addTextToPage('All done');
+}).catch(function(err) {
+  addTextToPage('Argh, broken: ' + err.message);
+}).then(function() {
+  document.querySelector('.spinner').style.display = 'none';
+});
 ```
 
+하지만 위 코드는 실패합니다. `forEach` 함수는 비동기적인 함수가 아니기 때문입니다.
 
+### Creating a sequence
 
+`chapterUrls`를 하나의 promise 시퀀스로 만드려면 `then()`을 사용하면 됩니다:
 
+```javascript
+return story.chapterUrls.reduce(function(sequence, chapterUrl) {
+  // Once the last chapter's promise is done…
+  return sequence.then(function() {
+    // …fetch the next chapter
+    return getJSON(chapterUrl);
+  }).then(function(chapter) {
+    // and add it to the page
+    addHtmlToPage(chapter.html);
+  });
+}, Promise.resolve());
+```
 
+> `Promise.resolve()`는 덧셈에서의 0과 같이 promise에서 최초의 체이닝 시작점 역할을 할 수 있다.
+>
+> - Promise.resolve() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 
+하지만 위와 같이 사용하면 한 번에 하나의 챕터 내용만 다운로드하기 때문에 성능 저하가 발생합니다. 한번에 다운로드해봅시다:
 
+```javascript
+// Take an array of promises and wait on them all
+return Promise.all(
+  // Map our array of chapter urls to
+  // an array of chapter json promises
+  story.chapterUrls.map(getJSON);
+);
+```
 
+여기서 조금 더 개선할 수 있습니다. 사용자는 챕터를 순서대로 읽을 것입니다. 한꺼번에 JSON을 가져오되, 챕터 순서대로 불러오도록 합니다:
 
+```javascript
+// Map our array of chapter urls to
+// an array of chapter json promises.
+// This makes sure they all download in parallel.
+return story.chapterUrls.map(getJSON)
+  .reduce(function(sequence, chapterPromise) {
+  // Use reduce to chain the promises together,
+  // adding content to the page for each chapter
+  return sequence.then(function() {
+    // Wait for everything in the sequence so far,
+    // then wait for this chapter to arrive.
+    return chapterPromise;
+  }).then(function(chapter) {
+    addHtmlToPage(chapter.html);
+  });
+}, Promise.resolve());
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+>  ES6 generator와 관련된 내용은 생략한다.
 

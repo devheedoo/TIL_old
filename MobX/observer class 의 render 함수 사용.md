@@ -1,4 +1,4 @@
-# [MobX] observer class 의 render 함수 사용
+# observer class 의 render 함수 사용
 
 > 출처: https://hyeooona825.tistory.com/97
 

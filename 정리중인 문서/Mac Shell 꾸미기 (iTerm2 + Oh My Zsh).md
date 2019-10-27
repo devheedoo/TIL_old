@@ -5,7 +5,7 @@
 > - [Oh My ZSH+ iTerm2로 터미널을 더 강력하게 - 해리의 유목코딩 | Medium](https://medium.com/harrythegreat/oh-my-zsh-iterm2로-터미널을-더-강력하게-a105f2c01bec)
 > - [Configuration of a beautiful (efficient) terminal and prompt on OSX in 7minutes - Clovis | Medium](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961)
 
-MacOS의 기본 쉘이 bash에서 zsh로 바뀌었다. `Terminal` 앱을 켤 때마다 `zsh` 관련 문구가 표시됩니다. 이 김에 쉘을 멋지게 바꾸기로 했습니다.
+MacOS의 기본 쉘이 bash에서 zsh로 바뀌었t습니다. `Terminal` 앱을 켤 때마다 `zsh` 관련 문구가 표시됩니다. 이 참에 쉘을 멋지게 바꾸기로 했습니다.
 
 원래는 [Oh My ZSH+ iTerm2로 터미널을 더 강력하게 - 해리의 유목코딩 | Medium](https://medium.com/harrythegreat/oh-my-zsh-iterm2로-터미널을-더-강력하게-a105f2c01bec) 글을 참고해서 작성했었습니다. 그런데 얼마 전 온라인 TDD 강의를 보다가 명령어 우측에 시간, history 번호 등이 표시되는 스킨을 보고 같은 스킨을 사용하고 싶어 뒤적거리다가 결국 찾아냈습니다.
 

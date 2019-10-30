@@ -10,11 +10,7 @@
 
 간단한 문자열 유효성 검사 기능을 구현해보자. 웹페이지에서 사용자의 input 을 확인하거나 외부에서 제공된 데이터 파일의 형식을 확인할 것이다.
 
-### Validators in a single file
-
-(코드 생략)
-
-### Namespacing
+## Namespacing
 
 유효성 검사 종류가 늘어남에 따라 타입을 유지하면서 이름이 충돌할 걱정을 하지 않게 구조화 계획을 원할 것이다. 전역 네임스페이스에 수많은 이름들을 쓰지 말고, 객체를 네임스페이스로 감싸보자.
 
@@ -43,11 +39,11 @@ namespace Validation {
 }
 ```
 
-### Splitting Across Files
+## Splitting Across Files
 
 앱의 규모가 커지면 코드를 여러 개의 파일로 분리해야 유지보수에 용이하다.
 
-#### Multi-file namespaces
+### Multi-file namespaces
 
 ##### Validation.ts
 
@@ -112,7 +108,7 @@ for (let s of strings) {
 
 `--outFile` 옵션을 사용하면 input file들이 JavaScirpt 파일로 생성된다. 직접 항목 하나하나를 입력할 수도 있다.
 
-### Aliases
+## Aliases
 
 ```typescript
 namespace Shapes {
@@ -126,43 +122,15 @@ import polygons = Shapes.Polygons;
 let sq = new polygons.Square(); // Same as 'new Shapes.Polygons.Square()'
 ```
 
-`require` 키워드를 사용하지 않고 직접 유효안 심볼명을 할당하는 것에 주목해라. 
+`require` 키워드를 사용하지 않고 직접 심볼명(Polygons)을 할당할 수 있다.
 
+**NOTE:** `import` 는 참조이므로 alias한 변수에 대한 변경사항은 원래의 변수에 영향을 미치지 않는다.
 
+## Working with Other JavaScript Libraries
 
+앞부분은 [Modules](./modules.md)와 중첩되는 내용이다.
 
+### Ambient Namespaces
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+D3 라이브러리는 기능을 d3 라는 전역 변수에 정의한다. `<script>` 태그로 불러오는 라이브러리기 때문에 형식을 namespace로 선언한다.
 

@@ -165,115 +165,127 @@ There are 2 kinds of side effects: those that don't require cleanup, and those t
 
 ## 5. Rules of Hooks
 
+2 rules when using Hooks:
+
+- **Only Call Hooks at the Top Level**
+  - Don't inside loops, conditions, or nested functions
+- **Only Call Hooks from React Functions**
+  - Don't from regular JavaScript Functions
 
+And,
 
+- ESLint plugin: eslint-plugin-react-hooks
 
+- Put a condition *inside* our Hook:
 
+  ```react
+  useEffect(function persistForm() {
+    // 👍 We're not breaking the first rule anymore
+    if (name !== '') {
+      localStorage.setItem('formData', name);
+    }
+  });
+  ```
 
 
 
+## 6. Building Your Own Hooks
 
+### Extracting a Custom Hook
 
+A custom Hook is:
 
+- JavaScript function whose name starts with "use"
+- may call other Hooks
 
+```react
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+  // ...
+  return isOnline;
+}
+```
 
+### Using a Custom Hook
 
+- All state and effects inside of custom Hooks are fully isolated
 
+- Since Hooks are functions, we can pass information between them
 
+  ```react
+  // setRecipientID calls useFriendStatus with changed RecipientId
+  const [recipientID, setRecipientID] = useState(1);
+  const isRecipientOnline = useFriendStatus(recipientID);
+  ```
 
+### useYourImagination()
 
+- todosReducer:
 
+    ```react
+    function todosReducer(state, action) {
+      switch (action.type) {
+    case 'add':
+          return [...state, {
+            text: action.text,
+            completed: false
+          }];
+        // ... other actions ...
+    default:
+          return state;
+      }
+    }
+    ```
+    
+- useReducer(simplified):
 
+    ```react
+    function useReducer(reducer, initialState) {
+      const [state, setState] = useState(initialState);
 
+      // reducer 함수의 결과로 state를 변경해주는 dispatch
+      function dispatch(action) {
+        const nextState = reducer(state, action);
+        setState(nextState);
+      }
 
+      return [state, dispatch];
+    }
+    ```
+    
+- reducer example:
 
+    ```react
+    function Todos() {
+      const [todos, dispatch] = useReducer(todosReducer, []);
+      
+      function handleAddClick(text) {
+        dispatch({ type: 'add', text });
+      }
+      
+      // ...
+    }
+    ```
 
 
 
+## 7. Hooks API Reference
 
+> https://reactjs.org/docs/hooks-reference.html
 
+### Basic Hooks
 
+- `useState`
+- `useEffect`
+- `useContext`
 
+### Additional Hooks
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- `useReducer`
+- `useCallback`
+- `useMemo`
+- `useRef`
+- `useImperativeHandle`
+- `useLayoutEffect`
+- `useDebugValue`
 

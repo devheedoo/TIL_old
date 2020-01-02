@@ -25,7 +25,7 @@ MacOS의 기본 쉘이 bash에서 zsh로 바뀌었t습니다. `Terminal` 앱을 
 # iTerm2
 $ brew cask install iterm2
 # 내비게이션
-$ brew brew install zsh zsh-completions
+$ brew install zsh zsh-completions
 # oh-my-zsh
 $ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # iTerm Theme
@@ -51,6 +51,10 @@ font: **Hack**
 
 ```bash
 ## ~/.zshrc
+## MODIFIED ZSH_THEME
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+## ADDED AT BOTTOM
 # powerlevel9k settings
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)

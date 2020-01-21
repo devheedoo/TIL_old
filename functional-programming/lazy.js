@@ -42,22 +42,3 @@ const take = curry((l, iter) => {
   }
   return res;
 });
-// test([1, 3, 5], take(3, [1, 3, 5, 7, 9]));
-
-console.log(Date.now().toString());
-test(
-  [5, 10, 15],
-  go([1, 2, 3, 4, 5],
-    map(a => a * 5),
-    take(3)
-  )
-);
-console.log(Date.now().toString());
-test(
-  [5, 10, 15],
-  go([1, 2, 3, 4, 5],
-    L.map(a => a * 5),
-    take(3)
-  )
-);
-console.log(Date.now().toString());

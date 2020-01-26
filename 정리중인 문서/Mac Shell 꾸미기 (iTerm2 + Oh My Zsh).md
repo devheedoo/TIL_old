@@ -5,9 +5,9 @@
 > - [Oh My ZSH+ iTerm2로 터미널을 더 강력하게 - 해리의 유목코딩 | Medium](https://medium.com/harrythegreat/oh-my-zsh-iterm2로-터미널을-더-강력하게-a105f2c01bec)
 > - [Configuration of a beautiful (efficient) terminal and prompt on OSX in 7minutes - Clovis | Medium](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961)
 
-MacOS의 기본 쉘이 bash에서 zsh로 바뀌었t습니다. `Terminal` 앱을 켤 때마다 `zsh` 관련 문구가 표시됩니다. 이 참에 쉘을 멋지게 바꾸기로 했습니다.
+MacOS의 기본 쉘이 bash에서 zsh로 바뀌었습니다. `Terminal` 앱을 켤 때마다 `zsh` 관련 문구가 표시됩니다. 이 참에 쉘을 멋지게 바꾸기로 했습니다.
 
-원래는 [Oh My ZSH+ iTerm2로 터미널을 더 강력하게 - 해리의 유목코딩 | Medium](https://medium.com/harrythegreat/oh-my-zsh-iterm2로-터미널을-더-강력하게-a105f2c01bec) 글을 참고해서 작성했었습니다. 그런데 얼마 전 온라인 TDD 강의를 보다가 명령어 우측에 시간, history 번호 등이 표시되는 스킨을 보고 같은 스킨을 사용하고 싶어 뒤적거리다가 결국 찾아냈습니다.
+원래는 [Oh My ZSH+ iTerm2로 터미널을 더 강력하게 - 해리의 유목코딩 | Medium](https://medium.com/harrythegreat/oh-my-zsh-iterm2로-터미널을-더-강력하게-a105f2c01bec) 글을 참고해서 작성했었습니다. 그런데 명령어 우측에 시간, history 번호 등이 표시되지 않아 설정을 다시 바꿨습니다.
 
 [Configuration of a beautiful (efficient) terminal and prompt on OSX in 7minutes - Clovis | Medium](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961) 글을 따라하면 아래와 같은 결과를 얻을 수 있습니다. 이미지에 보이는 것 외에 내용에 포함된 추가 기능 설정들도 있습니다:
 
@@ -74,6 +74,7 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbo
 
 **Visual Studio Code** settings:
 
+- VS Code 테마는 `Solarized Dark` 를 좋아합니다.
 - `command` + `,` 후 우측 상단의 문서 모양 아이콘을 누르면 아래처럼 json 형태로 작성할 수 있습니다.
 
 ```json
@@ -84,4 +85,3 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbo
     "terminal.integrated.fontFamily": "Hack"
 }
 ```
-
